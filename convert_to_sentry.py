@@ -5,7 +5,8 @@ from pathlib import Path
 from box import Box
 
 from text import configuration_patch, \
-    sentry_main_tf, serverless_custom, serverless_env
+    sentry_main_tf, serverless_custom, serverless_env, sentry_module, import_sentry, variable_tf_appendage, \
+    requirements_txt_appendage
 
 input_repo = '/Users/gvesztergombi/projects/twitter-profile-source'
 
@@ -170,14 +171,14 @@ def edit_repo(repo_path):
     repo = Path(repo_path)
     erase_error_log_count_from_alarms(repo)
     erase_error_log_count_from_alarms(repo)
-    # patch_configuration(repo)
-    # patch_main_tf(repo)
-    # patch_serverless_custom(repo)
-    # patch_serverless_environment(repo)
-    # create_file(repo / 'src' / 'sentry.py', sentry_module)
-    # prepend_to_file(repo / 'src' / 'handler.py', import_sentry)
-    # append_to_file(repo / 'variables.tf', variable_tf_appendage)
-    # append_to_file(repo / 'requirements.txt', requirements_txt_appendage)
+    patch_configuration(repo)
+    patch_main_tf(repo)
+    patch_serverless_custom(repo)
+    patch_serverless_environment(repo)
+    create_file(repo / 'src/sentry.py', sentry_module)
+    prepend_to_file(repo / 'src/handler.py', import_sentry)
+    append_to_file(repo / 'variables.tf', variable_tf_appendage)
+    append_to_file(repo / 'requirements.txt', requirements_txt_appendage)
 
 
 def main(input_repo_path):
