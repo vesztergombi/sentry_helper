@@ -2,13 +2,13 @@
 
 sentry_module = """import sentry_sdk
 from sentry_sdk.integrations.aws_lambda import AwsLambdaIntegration
-from src.configuration.configuration import configuration
+from {} import {} as configuration
 
 if configuration.sentry_enabled:
     sentry_sdk.init(
         configuration.sentry_integration_url,
         integrations=[AwsLambdaIntegration()],
-        traces_sample_rate=0.01,
+        traces_sample_rate=1.0,
         release=configuration.version,
         attach_stacktrace=True
     )
