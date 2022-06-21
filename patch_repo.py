@@ -244,6 +244,12 @@ def edit_repo(repo_path):
     append_to_file(repo / 'requirements.txt', requirements_txt_appendage)
 
 
+# def patch sentry_enable(repo_path):
+#     add_sentry_function()
+#     patch serverless()
+#     patch_main_tf()
+#     patch_config()
+
 def main(input_repo_path):
     edit_repo(input_repo_path)
 
